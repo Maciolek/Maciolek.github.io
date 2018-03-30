@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  const apiRoot = 'https://rest-project-app.herokuapp.com/tasks/';
+  const apiRoot = 'https://rest-project-app.herokuapp.com/task/';
   const trelloApiRoot = 'https://rest-project-app.herokuapp.com/trello/';
   const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
   const $tasksContainer = $('[data-tasks-container]');
@@ -112,8 +112,6 @@ $(document).ready(function() {
 
     $.ajax({
       url: requestUrl + '/' + taskId,
-        taskId: taskId
-      }),
       method: 'DELETE',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
@@ -140,7 +138,7 @@ $(document).ready(function() {
         content: taskContent
       }),
       complete: function(data) {
-        if(data.status === 200) {
+        if(data.status === 201) {
           getAllTasks();
         }
       }
@@ -168,7 +166,7 @@ $(document).ready(function() {
   }
 
   function handleCardCreationRequest(event) {
-    var requestUrl = trelloApiRoot + '/cards';
+    var requestUrl = trelloApiRoot + 'cards';
     var $relatedTaskRow = $(event.target).parents('[data-task-id]');
     var relatedTaskId = $relatedTaskRow.attr('data-task-id');
     var relatedTask = availableTasks[relatedTaskId];
