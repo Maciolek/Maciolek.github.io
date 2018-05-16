@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    const apiRoot = 'https://rest-project-app.herokuapp.com/task/';
-    const trelloApiRoot = 'https://rest-project-app.herokuapp.com/trello/';
+    const apiRoot = 'https://rest-project-app/task/';
+    const trelloApiRoot = 'https://rest-project-app/trello/';
     const datatableRowTemplate = $('[data-datatable-row-template]').children()[0];
     const $tasksContainer = $('[data-tasks-container]');
 
